@@ -28,5 +28,5 @@ trait CompanyTable {
 
   def insert(company: Company): Future[Company] = db.run(companyTable returning companyTable += company)
 
-  def selectAll:Future[Seq[Company]] = db.run(companyTable.result)
+  def selectAllCompanies:Future[Seq[Company]] = db.run(companyTable.result)
 }

@@ -48,14 +48,17 @@ trait Route extends CirceSupport  {
         }
       }
     }~
-    path("user"){
-      get{
-        complete(userService.selectAll)
+    pathPrefix("user"){
+      pathEnd {
+        complete(userService.selectAllUsers)
+      }~
+        pathSuffix("company"){
+          complete(userService.getUsersWithCompany)
       }
     }~
     path("company"){
       get{
-        complete(companyService.getCompanies)
+        complete(companyService.selectAllCompanies)
       }
     }
 }

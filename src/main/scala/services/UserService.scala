@@ -2,7 +2,7 @@ package services
 
 import dao.data.User
 import dao.data.tables.UserTable
-import messaging.serialized.{RequestUser, ResponseUser}
+import messaging.serialized.{RequestUser, ResponseUser, ResponseUserWithCompany}
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -15,5 +15,9 @@ class UserService( override val databaseService: DatabaseService)(implicit execu
     insert(User(reqUser)).map(user => ResponseUser(user.id.get))
   }
 
-  def getUsers:Future[Seq[User]] = selectAll
+  def getUsers:Future[Seq[User]] = selectAllUsers
+
+  def getUsersWithCompany: Future[Seq[ResponseUserWithCompany]] = {
+    selectUsersWithCompanies.map(_.map(response => ResponseUserWithCompany(response._1,response._2)))
+  }
 }

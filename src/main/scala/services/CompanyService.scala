@@ -15,6 +15,6 @@ class CompanyService ( override val databaseService: DatabaseService)(implicit e
     insert(Company(reqComp)).map(company => ResponseCompany(company.id.get))
   }
 
-  def getCompanies:Future[Seq[Company]] = selectAll
+  def getCompanies:Future[Seq[Company]] = selectAllCompanies
 }
 

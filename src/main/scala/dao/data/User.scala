@@ -1,5 +1,6 @@
 package dao.data
 
+import dao.base.BaseEntity
 import messaging.serialized.RequestUser
 
 /**
@@ -12,7 +13,7 @@ case class User
   firstName:String,
   lastName:String,
   telephone:Long
-)
+) extends BaseEntity
 
 object User{
   def apply(requestUser: RequestUser): User = new User(None, requestUser.firstName, requestUser.lastName, requestUser.telephone)

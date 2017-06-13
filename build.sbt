@@ -15,6 +15,7 @@ initialize := {
 libraryDependencies ++= Seq(
   "com.typesafe.akka"          %% "akka-http"                % "10.0.5",
   "de.heikoseeberger"          %% "akka-http-circe"          % "1.11.0",
+  "com.typesafe.akka"           % "akka-actor_2.11"          % "2.4.17",
 
   "com.typesafe.slick"         %% "slick"                    % "3.2.0-M2",
   "org.postgresql"             % "postgresql"                % "9.4-1201-jdbc41",
@@ -22,8 +23,12 @@ libraryDependencies ++= Seq(
 
   "io.circe"                   %% "circe-core"               % "0.6.1",
   "io.circe"                   %% "circe-generic"            % "0.6.1",
-  "io.circe"                   %% "circe-parser"             % "0.6.1"
+  "io.circe"                   %% "circe-parser"             % "0.6.1",
+
+  "org.jsoup"                   % "jsoup"                    % "1.8.3"
 )
+
+
 
 scalacOptions := Seq(
   "-deprecation",

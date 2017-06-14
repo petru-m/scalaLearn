@@ -11,6 +11,7 @@ case class ActorResponse()  extends Actor{
   override def receive: Receive = {
     case response:List[_] =>
       response.map(data => println(data))
+    case _ => println("Wrong data received")
   }
 
 }

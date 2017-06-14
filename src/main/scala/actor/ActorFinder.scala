@@ -20,7 +20,6 @@ case class ActorFinder() extends Actor{
     case url:URL =>
       sender() ! s"$url"
       host = url.getHost
-
     case query:String =>
       if(!host.isEmpty) {
         host = "https://"+host +"/search?q="+query
@@ -33,5 +32,6 @@ case class ActorFinder() extends Actor{
         val titles = document.getElementsByTag("h3").asScala.map(e => e.text()).toList
         actorResponse ! titles.take(3)
       }
+    case _ => println("Wrong data received")
   }
 }

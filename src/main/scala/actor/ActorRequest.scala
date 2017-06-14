@@ -19,7 +19,6 @@ case class ActorRequest()  extends Actor{
   val actorFinder = context.actorOf(Props[ActorFinder])
   override def receive: Receive = {
     case url:URL =>
-
       val result = actorFinder ? url
       result.map { value =>
         println(value)
@@ -27,10 +26,8 @@ case class ActorRequest()  extends Actor{
         case e: Exception =>
           println(s"$e")
       }
-
     case query: String =>
         actorFinder ! query
-
-    case _ => println("I do not understand you")
+    case _ => println("Wrong data received")
    }
 }
